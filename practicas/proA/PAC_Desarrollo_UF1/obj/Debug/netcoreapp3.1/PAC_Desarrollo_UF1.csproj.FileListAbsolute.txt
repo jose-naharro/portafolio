@@ -1,0 +1,13 @@
+D:\DAW-ILERNA\Q1\MP03-Pro-a\UF1\PAC_Desarrollo_UF1\PAC_Desarrollo_UF1\bin\Debug\netcoreapp3.1\PAC_Desarrollo_UF1.exe
+D:\DAW-ILERNA\Q1\MP03-Pro-a\UF1\PAC_Desarrollo_UF1\PAC_Desarrollo_UF1\bin\Debug\netcoreapp3.1\PAC_Desarrollo_UF1.deps.json
+D:\DAW-ILERNA\Q1\MP03-Pro-a\UF1\PAC_Desarrollo_UF1\PAC_Desarrollo_UF1\bin\Debug\netcoreapp3.1\PAC_Desarrollo_UF1.runtimeconfig.json
+D:\DAW-ILERNA\Q1\MP03-Pro-a\UF1\PAC_Desarrollo_UF1\PAC_Desarrollo_UF1\bin\Debug\netcoreapp3.1\PAC_Desarrollo_UF1.runtimeconfig.dev.json
+D:\DAW-ILERNA\Q1\MP03-Pro-a\UF1\PAC_Desarrollo_UF1\PAC_Desarrollo_UF1\bin\Debug\netcoreapp3.1\PAC_Desarrollo_UF1.dll
+D:\DAW-ILERNA\Q1\MP03-Pro-a\UF1\PAC_Desarrollo_UF1\PAC_Desarrollo_UF1\bin\Debug\netcoreapp3.1\PAC_Desarrollo_UF1.pdb
+D:\DAW-ILERNA\Q1\MP03-Pro-a\UF1\PAC_Desarrollo_UF1\PAC_Desarrollo_UF1\obj\Debug\netcoreapp3.1\PAC_Desarrollo_UF1.csprojAssemblyReference.cache
+D:\DAW-ILERNA\Q1\MP03-Pro-a\UF1\PAC_Desarrollo_UF1\PAC_Desarrollo_UF1\obj\Debug\netcoreapp3.1\PAC_Desarrollo_UF1.AssemblyInfoInputs.cache
+D:\DAW-ILERNA\Q1\MP03-Pro-a\UF1\PAC_Desarrollo_UF1\PAC_Desarrollo_UF1\obj\Debug\netcoreapp3.1\PAC_Desarrollo_UF1.AssemblyInfo.cs
+D:\DAW-ILERNA\Q1\MP03-Pro-a\UF1\PAC_Desarrollo_UF1\PAC_Desarrollo_UF1\obj\Debug\netcoreapp3.1\PAC_Desarrollo_UF1.csproj.CoreCompileInputs.cache
+D:\DAW-ILERNA\Q1\MP03-Pro-a\UF1\PAC_Desarrollo_UF1\PAC_Desarrollo_UF1\obj\Debug\netcoreapp3.1\PAC_Desarrollo_UF1.dll
+D:\DAW-ILERNA\Q1\MP03-Pro-a\UF1\PAC_Desarrollo_UF1\PAC_Desarrollo_UF1\obj\Debug\netcoreapp3.1\PAC_Desarrollo_UF1.pdb
+D:\DAW-ILERNA\Q1\MP03-Pro-a\UF1\PAC_Desarrollo_UF1\PAC_Desarrollo_UF1\obj\Debug\netcoreapp3.1\PAC_Desarrollo_UF1.genruntimeconfig.cache

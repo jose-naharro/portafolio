@@ -1,0 +1,61 @@
+L                              { Comprobar estado de la lista inicial }
+S 10
+V LUB
+V B
+V N
+I ARRRRR
+I B
+I N
+R 1000
+A PPDD                         { Dar de alta partidos }
+A ACBA
+I B
+I N
+B N
+A LUB
+I ARRRRR 
+A MOCB
+A UDPS
+A LUB                          { ERROR: intentan dar de alta al partido LUB dos veces }
+I LUB
+I RRR
+L								{ Comprobar lista de partidos}
+A LUB
+I ARRRRR                       
+B LUB                          { Dar de baja partidos anticonstitucionales }
+B MOCB
+B MOCB                         { ERROR: el MOCB es tan inconstitucional que intentan darlo de baja dos veces por si acaso }
+A LUB                          { LUB ha ganado el recurso interpuesto: se vuelve a dar de alta }
+V LUB                          { ERROR: intento de votacion con el colegio sin abrir }
+L                              { Comprobar lista de partidos }
+C                              { Apertura colegio }
+L
+I ARRRRR 
+A FPB                          { ERROR: intento de alta tardia de partido }
+V ACBA                         { Inicio votacion }
+V ACBA
+V LUB                          
+V PPDD
+V UDPS
+V UDPS
+S 10                         { Recuento parcial para el telediario de las 15h }
+V LUB                          { Continua votacion }
+V LUB
+V LUB
+V LUB
+V LUB
+V LUB
+C
+V N                            { Voto nulo } 
+R 1000
+S 10                          { ERROR: irregularidades detectadas en el recuento definitivo }
+B LUB                          { ERROR: la policia ha detectado que LUB ha hackeado e intentan dar de baja el partido }
+I LUB
+I B
+I N                         { Se leen el manual y ven que con el colegio abierto hay que ilegalizar y no dar de baja } 
+I ACBA
+I PPDD
+I UDPS
+L
+S 10                          { Recuento definitivo }
+C

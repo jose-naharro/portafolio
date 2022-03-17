@@ -1,0 +1,265 @@
+-----------------------------------------------------------------------------
+Titulo: Practica 2. Ordenacion por insercion y ordenacion shell.
+
+Autores: Natalia 
+         Jose Carlos Naharro Gordillo
+         Isaac 
+
+Grupo de practicas: Martes 10:30-12:30
+
+-----------------------------------------------------------------------------
+
+INTRODUCCION
+
+El problema consiste en ordenar ascendentemente un vector de n números 
+enteros. Como algoritmos de ordenación se utilizarán la ordenación por 
+inserción y la ordenación shell.
+A continuacion, comprobamos que funcionan correctamente.
+Calculamos los tiempos de ejecucion para distintos tamaños de vector y para
+tres diferentes situaciones iniciales: ordenados ascendentemente,
+descendentemente y vectores desordenados.
+Por ultimo, analizamos los resultados obtenidos hallando las cotas 
+subestimada, ajustada y sobrestimada.
+
+-----------------------------------------------------------------------------
+
+MAQUINA
+
+Procesador: Intel Core 2 Duo CPU E7300 A 2.66GHz * 2
+Memoria: 3.7GiB
+Sistema Operativo: ubuntu 12.04 LTS 64-bits
+
+-----------------------------------------------------------------------------
+
+MEDICIONES DE TIEMPO
+
+Todos los tiempos medidos estan expresados en microsegundos.
+
+Los tiempos menores a 500 microsegundos estan resaltados con un "*" en
+las tablas. En este caso seguimos la estrategia para mediciones de
+tiempos pequeños propuesta en los seminarios, medimos el tiempo que tarda
+en repetir el algoritmo K veces (en nuestro caso K = 1000),como el algoritmo
+modifica la entrada, le restamos el tiempo que tarda en generar los vectores
+y hallamos la media (dividiendo el tiempo entre K).  
+
+-----------------------------------------------------------------------------
+
+DESARROLLO
+
+Implementamos los dos algoritmos: ordenacion por insercion y ordenacion shell.
+Posteriormente comprobamos que funcionan correctamente.
+
+A continuacion calculamos los tiempos de ejecucion para vectores cuyo tamaño
+siguen una progresion geometrica de 2 (500, 1000, 2000, ...). 
+Hallamos las cotas ajustadas, subestimada y sobrestimada.
+En las siguientes tablas podemos verlo detalladamente.
+Añadimos despues de cada tabla la discusion y conclusion a la vista de los
+resultados obtenidos para cada algoritmo e inicializacion del vector.
+
+
+TABLA DE TIEMPOS INSERCION PARA VECTOR ASCENDENTE
+-------------------------------------------------------------------
+      n           T(n)      T(n)/f(n)      T(n)/g(n)      T(n)/h(n)
+-------------------------------------------------------------------
+*   500          1.397       0.009683       0.002794       0.000450
+*  1000          2.711       0.010793       0.002711       0.000392
+*  2000          5.545       0.012679       0.002772       0.000365
+*  4000         11.263       0.014791       0.002816       0.000339
+*  8000         22.637       0.017074       0.002830       0.000315
+* 16000         45.737       0.019814       0.002859       0.000295
+* 32000         91.220       0.022697       0.002851       0.000275
+                          subestimada       ajustada   sobrestimada
+                                        Cte = 0.0028
+*: tiempo promedio (en microsegundos) de 1000 ejecuciones del algoritmo.
+
+f(n) = n^0.8
+g(n) = n
+h(n) = n*lon(n)
+
+Discusion: para intentar evitar valores anomalos hemos ejecutado la medicion
+de tiempos en 4 ocasiones. La cota ajustada se aproxima a 0.0028, la cota
+subestimada tiende a infinito y la cota sobrestimada tiende a 0.
+
+Conclusion: la complejidad es O(n).
+
+
+TABLA DE TIEMPOS INSERCION PARA VECTOR DESCENDENTE
+-------------------------------------------------------------------
+      n           T(n)      T(n)/f(n)      T(n)/g(n)      T(n)/h(n)
+-------------------------------------------------------------------
+    500        623.000       0.008637       0.002492       0.000719
+   1000       2465.000       0.009813       0.002465       0.000619
+   2000       9961.000       0.011388       0.002490       0.000545
+   4000      39890.000       0.013097       0.002493       0.000475
+   8000     159693.000       0.015056       0.002495       0.000414
+  16000     641619.000       0.017372       0.002506       0.000362
+  32000    2570423.000       0.019986       0.002510       0.000315
+                          subestimada       ajustada   sobrestimada
+                                        Cte = 0.0025
+
+f(n) = n^1.8
+g(n) = n^2
+h(n) = n^2.2
+
+Discusion: para intentar evitar valores anomalos hemos ejecutado la medicion
+de tiempos en 4 ocasiones. La cota ajustada se aproxima a 0.0025, la cota
+subestimada tiende a infinito y la cota sobrestimada tiende a 0.
+
+Conclusion: la complejidad es O(n^2).
+
+
+TABLA DE TIEMPOS INSERCION PARA VECTOR ALEATORIA
+-------------------------------------------------------------------
+      n           T(n)      T(n)/f(n)      T(n)/g(n)      T(n)/h(n)
+-------------------------------------------------------------------
+*   500        318.674       0.004418       0.001275       0.000368
+   1000       1268.000       0.005048       0.001268       0.000319
+   2000       4927.000       0.005633       0.001232       0.000269
+   4000      20350.000       0.006681       0.001272       0.000242
+   8000      80068.000       0.007549       0.001251       0.000207
+  16000     321530.000       0.008706       0.001256       0.000181
+  32000    1285698.000       0.009997       0.001256       0.000158
+                          subestimada       ajustada   sobrestimada
+                                       Cte = 0.00125
+*: tiempo promedio (en microsegundos) de 1000 ejecuciones del algoritmo.
+
+f(n) = n^1.8
+g(n) = n^2
+h(n) = n^2.2
+
+Discusion: para intentar evitar valores anomalos hemos ejecutado la medicion
+de tiempos en 4 ocasiones. La cota ajustada se aproxima a 0.00125, la cota
+subestimada tiende a infinito y la cota sobrestimada tiende a 0.
+
+Conclusion: la complejidad es O(n^2).
+
+
+TABLA DE TIEMPOS SHELL PARA VECTOR ASCENDENTE
+-------------------------------------------------------------------
+      n           T(n)      T(n)/f(n)      T(n)/g(n)      T(n)/h(n)
+-------------------------------------------------------------------
+*   500          1.377       0.002754       0.001479       0.000354
+*  1000          2.734       0.002734       0.001370       0.000280
+*  2000          5.494       0.002747       0.001285       0.000224
+*  4000         11.243       0.002811       0.001226       0.000182
+   8000        787.000       0.098375       0.040048       0.005068
+  16000       1724.000       0.107750       0.040927       0.004416
+  32000       3721.000       0.116281       0.041209       0.003791
+  64000       8047.000       0.125734       0.041575       0.003261
+ 128000      17200.000       0.134375       0.041457       0.002773
+ 256000      36740.000       0.143516       0.041312       0.002356
+ 512000      78259.000       0.152850       0.041052       0.001996
+                          subestimada       ajustada   sobrestimada
+                                         Cte = 0.041
+*: tiempo promedio (en microsegundos) de 1000 ejecuciones del algoritmo.    
+
+f(n) = n
+g(n) = n^1.1
+h(n) = n^1.33
+
+Discusion: para intentar evitar valores anomalos hemos ejecutado la medicion
+de tiempos en 4 ocasiones, aun asi, hemos encontrado valores anomalos para n
+igual a 500, 1000, 2000 y 4000, por este motivo decidimos ampliar los valores
+de n hasta 512000, encontrando asi la constante a la que tiende la cota
+ajustada. Creemos que estos valores anomalos pueden ser debidos a la carga de
+CPU y a que son tiempos de ejecucion muy pequeños.
+La cota ajustada se aproxima a 0.041, la cota subestimada tiende a infinito 
+y la cota sobrestimada tiende a 0.
+
+Conclusion: la complejidad es O(n^1.1).
+
+
+TABLA DE TIEMPOS SHELL PARA VECTOR DESCENDENTE
+-------------------------------------------------------------------
+      n           T(n)      T(n)/f(n)      T(n)/g(n)      T(n)/h(n)
+-------------------------------------------------------------------
+*   500         20.422       0.040844       0.021940       0.005254
+*  1000         40.552       0.040552       0.020324       0.004150
+*  2000         89.492       0.044746       0.020924       0.003643
+   4000        535.000       0.133750       0.058356       0.008662
+   8000       1157.000       0.144625       0.058875       0.007451
+  16000       2509.000       0.156812       0.059562       0.006427
+  32000       5437.000       0.169906       0.060214       0.005540
+  64000      11596.000       0.181188       0.059912       0.004700
+ 128000      24924.000       0.194719       0.060074       0.004018
+ 256000      52745.000       0.206035       0.059309       0.003382
+ 512000     112658.000       0.220035       0.059097       0.002874
+                          subestimada       ajustada   sobrestimada
+                                          Cte = 0.06
+*: tiempo promedio (en microsegundos) de 1000 ejecuciones del algoritmo.
+
+f(n) = n
+g(n) = n^1.1
+h(n) = n^1.33
+
+Discusion: para intentar evitar valores anomalos hemos ejecutado la medicion
+de tiempos en 4 ocasiones, aun asi, hemos encontrado valores anomalos para n
+igual a 500, 1000 y 2000, por este motivo decidimos ampliar los valores
+de n hasta 512000, encontrando asi la constante a la que tiende la cota
+ajustada. Creemos que estos valores anomalos pueden ser debidos a la carga de
+CPU y a que son tiempos de ejecucion muy pequeños.
+La cota ajustada se aproxima a 0.06, la cota subestimada tiende a infinito 
+y la cota sobrestimada tiende a 0.
+
+Conclusion: la complejidad es O(n^1.1).
+
+
+TABLA DE TIEMPOS SHELL PARA VECTOR ALEATORIA
+-------------------------------------------------------------------
+      n           T(n)      T(n)/f(n)      T(n)/g(n)      T(n)/h(n)
+-------------------------------------------------------------------
+*   500         68.382       0.154864       0.051391       0.025542
+*  1000        157.168       0.180453       0.052950       0.024342
+   2000        519.000       0.302105       0.078384       0.033332
+   4000       1191.000       0.351474       0.080636       0.031717
+   8000       2681.000       0.401115       0.081371       0.029606
+  16000       6087.000       0.461706       0.082820       0.027872
+  32000      13694.000       0.526603       0.083526       0.026001
+  64000      30463.000       0.593904       0.083295       0.023984
+ 128000      67718.000       0.669327       0.083006       0.022108
+ 256000     152426.000       0.763807       0.083757       0.020635
+ 512000     337683.000       0.857876       0.083182       0.018956
+                          subestimada       ajustada   sobrestimada
+                                         Cte = 0.083
+*: tiempo promedio (en microsegundos) de 1000 ejecuciones del algoritmo.
+
+f(n) = n
+g(n) = n^1.1575
+h(n) = n^1.27
+
+Discusion: para intentar evitar valores anomalos hemos ejecutado la medicion
+de tiempos en 4 ocasiones, aun asi, hemos encontrado valores anomalos para n
+igual a 500 y 1000, por este motivo decidimos ampliar los valores
+de n hasta 512000, encontrando asi la constante a la que tiende la cota
+ajustada. Creemos que estos valores anomalos pueden ser debidos a la carga de
+CPU y a que son tiempos de ejecucion muy pequeños.
+La cota ajustada se aproxima a 0.083, la cota subestimada tiende a infinito 
+y la cota sobrestimada tiende a 0.
+
+Conclusion: la complejidad es O(n^1.1575).
+
+
+-----------------------------------------------------------------------------
+
+CONCLUSIONES FINALES
+
+Despues de observar detenidamente los resultados de nuestro analisis para el
+algoritmo de INSERCION podemos ver claramente que es mucho mas eficiente
+cuando la inicializacion del vector es ascendente (mejor caso), ya que su
+complejida es lineal, frente a la complejidad cuadratica que presentan las 
+otras dos inicializaciones. Observando los tiempos diremos que el caso medio
+corresponde a la inicializacion aleatoria del vector y el peor a la 
+descendente.
+
+En el caso del algoritmo de ordenacion SHELL podemos observar que con los tres
+tipos de inicializacion obtenemos una complejidad muy similar, si bien, viendo
+los tiempos de ejecucion, podemos decir que la inicializacion ascendente se
+ejecuta de una manera mas rapida que los otros dos casos. Aunque no podemos
+decir rotundamente que se trata del peor caso, a la vista de la complejidad y
+tiempos de ejecucion parece peor que los otros dos.
+
+Comparando estos algoritmos de ordenacion, INSERCION y SHELL, podemos decir 
+que en terminos globales es mas eficiente SHELL para los tres casos de
+inicializacion del vector, aunque para incializacion ascendente, es mejor
+INSERCION ya que su complejidad es lineal.
+

@@ -1,0 +1,257 @@
+-----------------------------------------------------------------------------
+Titulo: Practica 4. Monticulos.
+
+Asignatura: Algoritmos.
+
+Titulacion: Grado en Ingenieria Informatica.
+
+Autores: Natalia Iglesias Torres
+         Jose Carlos Naharro Gordillo
+         Isaac Cores Lopez
+
+Grupo de practicas: Martes 10:30-12:30
+
+Fecha: 9 de Diciembre de 2015
+-----------------------------------------------------------------------------
+
+INTRODUCCION
+
+En la presente practica se pide implementar una serie de operaciones sobre 
+monticulos de minimos. Las operacioes son: inicializar_monticulo, 
+crear_monticulo, eliminar_menor e insertar.
+Por otro lado tambien se pide implementar la ordenacion por monticulos. 
+A continuacion, comprobamos que funcionan correctamente.
+
+Demostramos empiricamente que anadir n nodos a un monticulo inicialmente vacio 
+(con la funcion insertar que usa el procedimiento flotar) se ejecuta en un 
+tiempo O(n*log(n)) mientras que crear un monticulo a partir de un vector 
+cualquiera con n elementos (operacion crear_monticulo) se ejecuta en un tiempo 
+O(n).
+
+Calculamos tambien empiricamente la complejidad del algoritmo de ordenacion 
+para tres situaciones iniciales diferentes: (a) el vector ya esta ordenado en 
+orden ascendente, (b) el vector ya esta ordenado en orden descendente, y 
+(c) el vector esta inicialmente desordenado.
+
+Por ultimo, analizamos los resultados obtenidos hallando las cotas 
+subestimada, ajustada y sobrestimada ademas de incluir unas conclusiones 
+finales.
+
+-----------------------------------------------------------------------------
+
+MAQUINA
+
+Procesador: Intel Core 2 Duo CPU E7300 A 2.66GHz * 2
+Memoria: 3.7GiB
+Sistema Operativo: ubuntu 12.04 LTS 64-bits
+
+-----------------------------------------------------------------------------
+
+MEDICIONES DE TIEMPO
+
+Todos los tiempos medidos estan expresados en microsegundos.
+
+Los tiempos menores a 500 microsegundos estan resaltados con un "*" en
+las tablas. En este caso seguimos la estrategia para mediciones de tiempos 
+pequenos propuesta en los seminarios, medimos el tiempo que tarda en repetir 
+el algoritmo K veces (en nuestro caso K = 1000) y hallamos la media dividiendo 
+el tiempo entre K.  
+
+-----------------------------------------------------------------------------
+
+DESARROLLO
+
+Implementamos las operaciones sobre monticulos de minimos.
+Posteriormente comprobamos que funcionan correctamente.
+
+A continuacion calculamos los tiempos de ejecucion para anadir n nodos a un 
+monticulo inicialmente vacio mediante la operacion insertar.
+Calculamos tambien los tiempos que se tarda en crear un monticulo a partir de 
+un vector cualquiera con n elementos.
+Tanto el tamaño de los n nodos como de los vectores siguen una progresion 
+geometrica de 2 (500, 1000, 2000, ...). 
+Hallamos las cotas ajustadas, subestimada y sobrestimada, demostrando que 
+insertar se ejecuta en un tiempo O(n*log(n)) mientras que crear un monticulo 
+a partir de un vector cualquiera con n elementos se ejecuta en un tiempo O(n).
+
+En las dos tablas siguientes podemos verlo detalladamente.
+Anadimos despues de cada tabla la discusion y conclusion a la vista de los
+resultados obtenidos para cada algoritmo.
+
+
+TABLA DE TIEMPOS CREACION DE MONTICULOS INSERTANDO.
+-------------------------------------------------------------------
+      n           T(n)      T(n)/f(n)      T(n)/g(n)      T(n)/h(n)
+-------------------------------------------------------------------
+*   500         54.177       0.108354       0.017435       0.004846
+*  1000        120.265       0.120265       0.017410       0.003803
+*  2000        264.748       0.132374       0.017416       0.002960
+   4000        570.000       0.142500       0.017181       0.002253
+   8000       1228.000       0.153500       0.017080       0.001716
+  16000       2689.000       0.168063       0.017361       0.001329
+  32000       5814.000       0.181688       0.017515       0.001016
+  64000      12560.000       0.196250       0.017733       0.000776
+ 128000      26933.000       0.210414       0.017893       0.000588
+                          subestimada       ajustada   sobrestimada
+                                         Cte = 0.017
+*: tiempo promedio (en microsegundos) de 1000 ejecuciones del algoritmo.
+
+f(n) = n
+g(n) = n*log(n)
+h(n) = n^1.5
+
+Discusion: para intentar evitar valores anomalos hemos ejecutado la medicion
+de tiempos en 4 ocasiones. La cota ajustada se aproxima a 0.017, la cota
+subestimada tiende a infinito y la cota sobrestimada tiende a 0.
+
+Conclusion: la complejidad es O(n*log(n)), como queriamos demostrar.
+
+
+TABLA DE TIEMPOS CREACION DE MONTICULOS A PARTIR DE VECTOR.
+-------------------------------------------------------------------
+      n           T(n)      T(n)/f(n)      T(n)/g(n)      T(n)/h(n)
+-------------------------------------------------------------------
+*   500         15.191       0.105296       0.030382       0.008766
+*  1000         30.175       0.120129       0.030175       0.007580
+*  2000         60.126       0.137480       0.030063       0.006574
+*  4000        119.048       0.156341       0.029762       0.005666
+*  8000        235.124       0.177347       0.029390       0.004871
+* 16000        481.741       0.208698       0.030109       0.004344
+  32000        963.000       0.239611       0.030094       0.003780
+  64000       1919.000       0.274240       0.029984       0.003278
+ 128000       3845.000       0.315594       0.030039       0.002859
+                                          Cte = 0.03
+
+f(n) = n^0.8
+g(n) = n
+h(n) = n^1.2
+
+Discusion: para intentar evitar valores anomalos hemos ejecutado la medicion
+de tiempos en 4 ocasiones. La cota ajustada se aproxima a 0.03, la cota
+subestimada tiende a infinito y la cota sobrestimada tiende a 0.
+
+Conclusion: la complejidad es O(n), como queriamos demostrar.
+
+=============================================================================
+
+Implementamos ahora la ordenacion por monticulos.
+Comprobamos que funcionan correctamente.
+
+Calculamos los tiempos que se tarda en ordenar un vector de n elementos 
+mediante el algoritmo de ordenacion por monticulos, que utiliza la operacion 
+crear_monticulo. Se estudiaran tres situaciones del vector: (a) el vector ya 
+esta ordenado en orden ascendente, (b) el vector ya esta ordenado
+en orden descendente, y (c) el vector esta inicialmente desordenado.
+
+El tamano de los vectores siguen una progresion geometrica de 2 (500, 1000, 
+2000, ...).
+Hallamos las cotas ajustadas, subestimada y sobrestimada.
+En las tres tablas siguientes podemos verlo detalladamente.
+Anadimos despues de cada tabla la discusion y conclusion a la vista de los
+resultados obtenidos para cada algoritmo.
+
+TABLA DE TIEMPOS DE ORDENACION POR MONTICULOS PARA VECTOR ASCENDENTE
+-------------------------------------------------------------------
+      n           T(n)      T(n)/f(n)      T(n)/g(n)      T(n)/h(n)
+-------------------------------------------------------------------
+*   500         89.806       0.179612       0.028902       0.008032
+*  1000        196.185       0.196185       0.028401       0.006204
+*  2000        425.627       0.212814       0.027998       0.004759
+   4000        927.000       0.231750       0.027942       0.003664
+   8000       2003.000       0.250375       0.027859       0.002799
+  16000       4296.000       0.268500       0.027737       0.002123
+  32000       9201.000       0.287531       0.027718       0.001607
+  64000      19644.000       0.306937       0.027735       0.001213
+ 128000      41807.000       0.326617       0.027774       0.000913
+                          subestimada       ajustada   sobrestimada
+                                        Cte = 0.0277
+*: tiempo promedio (en microsegundos) de 1000 ejecuciones del algoritmo.
+
+f(n) = n
+g(n) = n*log(n)
+h(n) = n^1.5
+
+Discusion: para intentar evitar valores anomalos hemos ejecutado la medicion
+de tiempos en 4 ocasiones. La cota ajustada se aproxima a 0.0277, la cota
+subestimada tiende a infinito y la cota sobrestimada tiende a 0.
+
+Conclusion: la complejidad es O(n*log(n)).
+
+
+TABLA DE TIEMPOS DE ORDENACION POR MONTICULOS PARA VECTOR DESCENDENTE
+-------------------------------------------------------------------
+      n           T(n)      T(n)/f(n)      T(n)/g(n)      T(n)/h(n)
+-------------------------------------------------------------------
+*   500         97.764       0.195528       0.031463       0.008744
+*  1000        214.426       0.214426       0.031041       0.006781
+*  2000        460.090       0.230045       0.030265       0.005144
+   4000        990.000       0.247500       0.029841       0.003913
+   8000       2114.000       0.264250       0.029403       0.002954
+  16000       4543.000       0.283938       0.029331       0.002245
+  32000       9687.000       0.302719       0.029182       0.001692
+  64000      20555.000       0.321172       0.029022       0.001270
+ 128000      43660.000       0.341094       0.029005       0.000953
+                          subestimada       ajustada   sobrestimada
+                                         Cte = 0.029
+*: tiempo promedio (en microsegundos) de 1000 ejecuciones del algoritmo.    
+
+f(n) = n
+g(n) = n*log(n)
+h(n) = n^1.5
+
+Discusion: para intentar evitar valores anomalos hemos ejecutado la medicion
+de tiempos en 4 ocasiones. La cota ajustada se aproxima a 0.029, la cota
+subestimada tiende a infinito y la cota sobrestimada tiende a 0.
+
+Conclusion: la complejidad es O(n*log(n)).
+
+
+TABLA DE TIEMPOS DE ORDENACION POR MONTICULOS PARA VECTOR ALEATORIO
+-------------------------------------------------------------------
+      n           T(n)      T(n)/f(n)      T(n)/g(n)      T(n)/h(n)
+-------------------------------------------------------------------
+*   500        104.039       0.208078       0.033482       0.009306
+*  1000        229.509       0.229509       0.033225       0.007258
+   2000        502.000       0.251000       0.033022       0.005613
+   4000       1085.000       0.271250       0.032704       0.004289
+   8000       2345.000       0.293125       0.032616       0.003277
+  16000       5067.000       0.316688       0.032714       0.002504
+  32000      10939.000       0.341844       0.032954       0.001911
+  64000      23485.000       0.366953       0.033158       0.001451
+ 128000      50143.000       0.391742       0.033312       0.001095
+                          subestimada       ajustada   sobrestimada
+                                         Cte = 0.033
+*: tiempo promedio (en microsegundos) de 1000 ejecuciones del algoritmo.
+
+f(n) = n
+g(n) = n*log(n)
+h(n) = n^1.5
+
+Discusion: para intentar evitar valores anomalos hemos ejecutado la medicion
+de tiempos en 4 ocasiones. La cota ajustada se aproxima a 0.033, la cota
+subestimada tiende a infinito y la cota sobrestimada tiende a 0.
+
+Conclusion: la complejidad es O(n*log(n)).
+
+-----------------------------------------------------------------------------
+
+CONCLUSIONES FINALES
+
+En el estudio de las complejidades de las operaciones insertar y 
+crear_monticulo hemos utilizados vectores inicializados descendentemente para
+que las complejidades fueran las propuestas. Para vectores inicializados as-
+cendentemente la complejidad de insertar se aproximaba a n, y en caso
+de vectores aleatorios varia.
+
+En el caso de crear_monticulo la complejidad es O(n) para los 3 tipos de
+inicializacion del vector.
+
+El tiempo de inicializacion del monticulo es despreciable por eso no lo 
+contemplamos en la medicion de tiempos pequenos.
+
+En el calculo de la complejidad en la ordenacion por monticulos, para las 3 
+inicializaciones del vector, la complejidad es O(n*log(n)). 
+Nos llamo la atencion que la ordenacion por monticulos con vectores ascendentes 
+es un poco mas rapida que con las otras dos inicializaciones del vector ya que 
+con vectores ascendentes la entrada ya esta ordenada y no es necesario utilizar 
+la operacion flotar.

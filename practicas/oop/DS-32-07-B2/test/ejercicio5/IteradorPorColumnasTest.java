@@ -1,0 +1,77 @@
+package ejercicio5;
+
+import java.util.NoSuchElementException;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+/**
+ *
+ * @author natalia.iglesiast
+ * @author jose.naharro
+ */
+public class IteradorPorColumnasTest {
+
+    public IteradorPorColumnasTest() {
+    }
+
+    /**
+     * Test of hasNext method, of class IteradorPorColumnas.
+     */
+    @Test
+    public void testHasNext() {
+
+        Matriz m = new Matriz(3, 3);
+        IteradorPorColumnas itC = new IteradorPorColumnas(m);
+        assertEquals(true, itC.hasNext());
+        itC.next();
+        itC.next();
+        itC.next();
+        itC.next();
+        itC.next();
+        itC.next();
+        itC.next();
+        itC.next();
+        assertEquals(false, itC.hasNext());
+
+    }
+
+    /**
+     * Test of next method, of class IteradorPorColumnas.
+     */
+    @Test
+    public void testNext() {
+        Matriz m = new Matriz(3, 3);
+        IteradorPorColumnas itC = new IteradorPorColumnas(m);
+        Integer expResult = 0;
+        Integer result = itC.next();
+        assertEquals(expResult, result);
+
+    }
+
+
+    /**
+     * Test of remove method, of class IteradorPorFilas.
+     */
+    @Test(expected = UnsupportedOperationException.class)
+    public void testRemove() {
+        IteradorPorColumnas itC = new IteradorPorColumnas(null);
+        itC.remove();
+    }
+    
+    @Test(expected = NoSuchElementException.class)
+    public void testNextFail() {
+        Matriz m = new Matriz(3, 3);
+        IteradorPorColumnas itC = new IteradorPorColumnas(m);
+        itC.next();
+        itC.next();
+        itC.next();
+        itC.next();
+        itC.next();
+        itC.next();
+        itC.next();
+        itC.next();
+        itC.next();
+
+    }
+
+}

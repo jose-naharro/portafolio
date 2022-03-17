@@ -1,0 +1,150 @@
+-----------------------------------------------------------------------------
+Titulo: Practica 1. Suma de la subsecuencia maxima.
+
+Autores: Natalia
+         Jose Carlos Naharro Gordillo (jose.naharro)
+         Isaac
+
+Grupo de practicas: Martes 10:30-12:30
+
+-----------------------------------------------------------------------------
+
+INTRODUCCION
+
+Estudio de la complejidad de dos algoritmos distintos que calculan la
+suma de la subsecuencia maxima. Primero, implementamos los algortimos
+propuestos. A continuacion, comprobamos que funcionan correctamente.
+Calculamos los tiempos de ejecucion con vectores aleatorios de distintos
+tamaños. Por ultimo, analizamos los resultados obtenidos hallando las
+cotas subestimada, ajustada y sobrestimada.
+
+-----------------------------------------------------------------------------
+
+MAQUINA
+
+Procesador: Intel Core 2 Duo CPU E7300 A 2.66GHz * 2
+Memoria: 3.7GiB
+Sistema Operativo: ubuntu 12.04 LTS 64-bits
+
+-----------------------------------------------------------------------------
+
+MEDICIONES DE TIEMPO
+
+Todos los tiempos medidos estan expresados en microsegundos.
+
+Los tiempos menores a 500 microsegundos estan resaltados con un "*" en
+las tablas. En este caso seguimos la estrategia para mediciones de
+tiempos pequeños propuesta en los seminarios, medimos el tiempo que tarda
+en repetir el algoritmo K veces (en nuestro caso K = 1000) le restamos el
+tiempo que tarda en generar los vectores aleatorios y hallamos la media
+(dividiendo el tiempo entre K).  
+
+-----------------------------------------------------------------------------
+
+DESARROLLO
+
+Implementamos los dos algoritmos que realizan la suma de la subsecuencia
+maxima. En las tablas 1 y 2 comprobamos que funcionan correctamente.
+
+test1
+                          sumaSubMax1    sumaSubMax2
+[  -9   2   6  -4  -4]              8              8
+[   4   0   9   2   5]             20             20
+[  -2  -1  -9  -7  -1]              0              0
+[   9  -2   1  -7  -8]              9              9
+[  15  -2  -5  -4  16]             20             20
+[   7  -5   6   7  -7]             15             15
+
+Tabla 1. Comprobacion de los algoritmos con los vectores de ejemplo.
+
+
+test2
+                                      sumaSubMax1    sumaSubMax2
+[   4   0   1   3  -7   7  -8   2]              8              8
+[   1  -3   5   4   2   6   3   0]             20             20
+[  -5  -6   5   6   0  -2   1   5]             15             15
+[   5  -7   1   8  -8   4   5  -5]             10             10
+[  -5  -3   6  -4   3  -3  -3   3]              6              6
+[  -6  -7  -1   4  -1   1   3   2]              9              9
+[   3   0   7   3   6  -1  -1  -6]             19             19
+[  -8   0  -7   0  -5  -3   4  -2]              4              4
+[  -7  -8  -7   4  -2   7  -1   0]              9              9
+[  -1  -3  -5   6  -3   7   7   0]             17             17
+
+Tabla 2. Comprobacion de los algoritmos con vectores generados aleatoriamente.
+         Para un n = 8 en el rango [-n,...,+n].
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+A continuacion calculamos los tiempos de ejecucion para vectores
+generados aleatoriamente de tamaño n igual a 500, 1000, 2000, 4000, 8000,
+16000 y 32000. Hallamos las cotas ajustadas, subestimada y sobrestimada.
+En las siguientes tablas podemos verlo detalladamente.
+Añadimos despues de cada tabla la discursion y conclusion a la vista de los
+resultados obtenidos para cada algoritmo.
+
+SumaSubMax 1
+            n           t(n)     t(n)/n^1.8       t(n)/n^2     t(n)/n^2.2
+          500        569.000       0.007888       0.002276       0.000657
+         1000       2243.000       0.008930       0.002243       0.000563
+         2000       8937.000       0.010217       0.002234       0.000489
+         4000      35714.000       0.011725       0.002232       0.000425
+         8000     142613.000       0.013446       0.002228       0.000369
+        16000     571568.000       0.015476       0.002233       0.000322
+        32000    2285468.000       0.017771       0.002232       0.000280
+                                subestimada       ajustada   sobrestimada
+                                             Cte = 0.00223
+
+Tabla 3. Detalle de los tiempos y las cotas para el primer algoritmo.
+
+Discusion: para intentar evitar valores anomalos hemos ejecutado la medicion
+de tiempos en 4 ocasiones. La cota ajustada se aproxima a 0.00223, la cota
+subestimada tiende a infinito y la cota sobrestimada tiende a 0.
+
+Conclusion: la complejidad es O(n^2).
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+SumaSubMax 2
+            n           t(n)  t(n)/(n)^0.87    t(n)/n^0.99     t(n)/nlogn
+*         500          3.309       0.014845       0.007042       0.001065
+*        1000          6.143       0.015079       0.006582       0.000889
+*        2000         11.606       0.015588       0.006261       0.000763
+*        4000         22.205       0.016318       0.006031       0.000669
+*        8000         43.018       0.017297       0.005883       0.000598
+*       16000         85.206       0.018745       0.005867       0.000550
+*       32000        167.781       0.020196       0.005816       0.000505
+*       64000        331.875       0.021857       0.005792       0.000469
+       128000        649.000       0.023387       0.005703       0.000431
+       256000       1295.000       0.025533       0.005729       0.000406
+       512000       2635.000       0.028426       0.005870       0.000391
+                                subestimada       ajustada   sobrestimada
+                                              Cte = 0.0058
+
+*: tiempo promedio (en microsegundos) de 1000 ejecuciones del algoritmo.
+Tabla 4. Detalle de los tiempos y las cotas para el segundo algoritmo.
+
+Discusion: para intentar evitar valores anomalos hemos ejecutado la medicion
+de tiempos en 4 ocasiones, aun asi, hemos encontrado valores anomalos para n
+igual a 500, 1000, 2000 y 4000, por este motivo decidimos ampliar los valores
+de n hasta 512000, encontrando asi la constante a la que tiende la cota
+ajustada. Creemos que estos valores anomalos pueden ser debidos a la carga de
+CPU y a que son tiempos de ejecucion muy pequeños.
+La cota ajustada se aproxima a 0.0058, la cota subestimada tiende a infinito
+y la cota sobrestimada tiende a 0.
+
+Conclusion: la complejidad es O(n^0.99).
+
+-----------------------------------------------------------------------------
+
+CONCLUSIONES FINALES
+
+Despues de observar detenidamente los resultados de nuestro analisis para 
+cada algoritmo podemos concluir que 'SumaSubMax 2' es mas eficiente que
+'SumaSubMax 1' dado que presenta la menor complejidad computacional de los
+dos, siendo esta con O(n^0.99), muy proxima a una complejidad lineal, lejos
+de la complejidad cuadratica que tiene 'sumaSubMax1'.
+
+Una de las cosas que nos ha llamado la atencion es que 'SumaSubMax 2' se
+ejecuta en tiempos mucho mas pequeños que 'SumaSubMax 1', lo que nos da a
+entender que el segundo algoritmo es mucho mas eficiente que el primero.

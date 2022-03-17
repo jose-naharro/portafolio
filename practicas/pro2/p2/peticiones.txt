@@ -1,0 +1,32 @@
+C cole1       10                    {Apertura de colegio}
+C cole2       20                    {Apertura de colegio}
+C cole3       30                    {Apertura de colegio}
+G                                   {Estadisticas globales}
+A cole1                             {Anulación de colegio}
+L cole1                             {Estadísticas locales: colegio inexistente (ERROR)}
+V cole1       XXX                   {Voto en colegio inexistente (ERROR)}
+A cole2                             {Anulación de colegio}
+A cole3                             {Anulación de colegio}                                   {Estadísticas globales}
+C COLEGIO_1    10                   {Apertura de colegio}
+C COLEGIO_2    20                   {Apertura de colegio}
+C COLEGIO_3    30                   {Apertura de colegio}
+C COLEGIO_4    40                   {Apertura de colegio}
+C COLEGIO_5    50                   {Apertura de colegio}
+G                                   {Estadisticas globales}
+V COLEGIO_2    B                    {Voto en blanco}
+V COLEGIO_2    ECB                  {Voto a partido nuevo: inserción}
+V COLEGIO_2    ECB                  {Voto a partido ya existente: actualización}
+L COLEGIO_2                         {Estadisticas locales}
+G                                   {Estadisticas globales}
+V COLEGIO_5    AAA
+V COLEGIO_5    CCC
+V COLEGIO_5    OOO
+V COLEGIO_5    ZZZ
+L COLEGIO_5                         {Estadisticas locales}
+I CCC                               {Ilegalización}
+L COLEGIO_5                         {Estadisticas locales}
+F COLEGIO_1                         {Cierre de colegio}
+V COLEGIO_1    UBNN                 {Voto en colegio ya cerrado (ERROR)}
+G                                   {Estadisticas globales}
+I N
+I B
