@@ -1,6 +1,7 @@
 # Hola
 
-Soy **José Carlos Naharro**, Técnico Superior en Desarrollo de aplicaciones Web, pero sobre todo un apasionada de la programación y la tecnología.
+Soy **José Carlos Naharro**, Técnico Superior en Desarrollo de aplicaciones Web, pero sobre todo un apasionado de la programación y la tecnología.
+
 Muestro tres apartados:
 
 - Algunas **prácticas** que he realizado en mi desarrollo como programador.
@@ -34,4 +35,5 @@ La pantalla utilizada es de alto brillo "sunlight readable" de 1200 nits. Se han
 El desarrollo se esta haciendo con hardware y software libre, **Arduino** que usa librerías en **C++** y cuya sintaxis es similar a este lenguaje de programación, **Raspberry Pi** con sistema basado en **GNU/Linux** y para la parte gráfica **Processing**, un lenguaje originalmente desarrollado por el MIT que está basado en **Java**, de hecho se puede utilizar y se utiliza directamente código Java.
 
 Está en desarrollo, por lo que no es una versión definitiva, y se están integrando cambios como la transmisión de los datos por una interfaz CAN.
+
 [Aquí](https://github.com/jose-naharro/portafolio/tree/master/proPersonal/interfaz) puedes ver el código de la interfaz y [aquí](https://github.com/jose-naharro/portafolio/tree/master/proPersonal) el código arduino de algunas funcionalidades.
